@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predição de Valor de Imóveis - Califórnia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Predição de Valor de Imóveis na Califórnia</h1>
+        <p>Insira os dados do imóvel para obter uma estimativa de valor com base no modelo de Machine Learning.</p>
+
+        <form action="{{ url_for('predict') }}" method="post">
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="longitude">Longitude</label>
+                    <input type="number" step="any" id="longitude" name="longitude" placeholder="-122.23" min="-124.35" max="-114.31" required>
+                    <small>Ex: -118.24 (Valores negativos)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="latitude">Latitude</label>
+                    <input type="number" step="any" id="latitude" name="latitude" placeholder="37.88" min="32.54" max="41.95" required>
+                    <small>Ex: 34.05</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="housing_median_age">Idade Média do Imóvel (anos)</label>
+                    <input type="number" id="housing_median_age" name="housing_median_age" placeholder="28" min="1" max="52" required>
+                    <small>Entre 1 e 52 anos.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="total_rooms">Total de Cômodos (no distrito)</label>
+                    <input type="number" id="total_rooms" name="total_rooms" placeholder="2600" min="2" required>
+                    <small>Número total de cômodos na região.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="total_bedrooms">Total de Quartos (no distrito)</label>
+                    <input type="number" id="total_bedrooms" name="total_bedrooms" placeholder="540" min="1" required>
+                    <small>Número total de quartos na região.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="population">População (no distrito)</label>
+                    <input type="number" id="population" name="population" placeholder="1425" min="3" required>
+                    <small>População total da região.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="households">Total de Domicílios (no distrito)</label>
+                    <input type="number" id="households" name="households" placeholder="500" min="1" required>
+                    <small>Número total de famílias/casas.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="median_income">Renda Média (x$10.000)</label>
+                    <input type="number" step="any" id="median_income" name="median_income" placeholder="3.5" min="0.5" max="15" required>
+                    <small>Ex: 3.5 para $35,000 anuais.</small>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="ocean_proximity">Proximidade do Oceano</label>
+                    <select id="ocean_proximity" name="ocean_proximity" required>
+                        <option value="<1H OCEAN"><1H OCEAN</option>
+                        <option value="INLAND">INLAND</option>
+                        <option value="NEAR OCEAN">NEAR OCEAN</option>
+                        <option value="NEAR BAY">NEAR BAY</option>
+                        <option value="ISLAND">ISLAND</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit">Prever Valor do Imóvel</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            <h2>{{ prediction_text }}</h2>
+        </div>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
