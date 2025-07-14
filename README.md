@@ -86,7 +86,7 @@ Você verá a interface web pronta para receber os dados e fazer predições.
 🎬 Apresentação em Vídeo
 Uma demonstração completa do projeto, incluindo a navegação pelo notebook e pela aplicação web funcional, está disponível no link abaixo:
 
-Clique aqui para assistir à apresentação no YouTube
+[Clique aqui para assistir à apresentação no YouTube](https://youtu.be/KjcytBpt6cQ)
 
 ✍️ Autores
 ALFREDO HENRIQUE SIVEIRA BEZERRA DOS SANTOS
